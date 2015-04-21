@@ -7,8 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message) %>
+  <% end %>
 
-<%= yield %>
+  <% unless session[:user_id].nil? %>
+    <p>Currently logged-in user: <%= User.find_by(id: session[:user_id]).name %></p>
+  <% end %>
 
+  <%= yield %>
+
+  <% unless session[:user_id].nil? %>
+    <%= link_to "Log out", logout_path, :method => :delete %>
+  <% end %>
+  
 </body>
 </html>
