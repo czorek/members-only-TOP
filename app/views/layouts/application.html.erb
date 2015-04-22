@@ -18,8 +18,15 @@
   <%= yield %>
 
   <% unless session[:user_id].nil? %>
-    <%= link_to "Log out", logout_path, :method => :delete %>
+    <table>
+      <th>
+        <%= link_to "Log out", logout_path, :method => :delete %> |
+      </th>
   <% end %>
+      <th>
+        <%= link_to "New post", new_post_path %>
+      </th>
+    </table>
   
 </body>
 </html>

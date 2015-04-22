@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   has_secure_password
   before_save :remember
+  has_many :posts
  
   def self.new_token
     SecureRandom.urlsafe_base64
